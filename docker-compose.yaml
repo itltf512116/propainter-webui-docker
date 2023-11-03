@@ -1,0 +1,23 @@
+services:
+ facefusion-cuda:
+  # build:
+  #  context: .
+  #  dockerfile: Dockerfile.cuda
+  image: propainter-ui:v1.2
+  volumes:
+  - ./ProPainter-Webui:/ProPainter-Webui
+  - ./weights:/ProPainter-Webui/weights
+  - ./ckpt:/ProPainter-Webui/ckpt
+  ports:
+  - 7992:7860
+  environment:
+  - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:32
+  # cuda_home要和镜像里面的cuda目录一致
+  - CUDA_HOME=/usr/local/cuda
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - capabilities: [ gpu ]
+            driver: nvidia
+            device_ids: ['0']
