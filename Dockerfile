@@ -35,7 +35,7 @@ RUN  pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
     && pip install -r requirements.txt
 
 RUN pip install opencv-contrib-python gradio==3.50.2 scikit-image addict yapf pycocotools timm supervision einops av spatial-correlation-sampler
-# 将需要用到的模型文件挂载到/ProPainter-Webui/ProPainter/weight
+# 将需要用到的模型文件挂载到/ProPainter-Webui/weight
 
 # 下载 https://cdn-media.huggingface.co/frpc-gradio-0.2/frpc_linux_amd64
 COPY frpc_linux_amd64 frpc_linux_amd64_v0.2

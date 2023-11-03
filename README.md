@@ -25,8 +25,12 @@ git clone https://github.com/IDEA-Research/GroundingDINO.git
 cd GroundingDINO && python setup.py build
 # 编译完成之后，找到文件 _C.cpython-310-x86_64-linux-gnu.so 放到目录/ProPainter-Webui/groundingdino中
 
-# 5. 启动docker时设置环境变量 CUDA_HOME=/usr/local/cuda，可以参考docker-compose.yml
+# 5. 修改/ProPainter-Webui/requirements.txt，注释掉下面两行
+torch==2.0.1+cu117
+torchvision==0.15.2+cu117
 
 # 6.打包镜像
 docker build -t propainter-ui:v1.2 .
+
+# 7.启动docker时设置环境变量 CUDA_HOME=/usr/local/cuda，可以参考docker-compose.yml
 ```
